@@ -3,7 +3,7 @@ import numpy as np
 
 class Sorter:
     def __init__(self, df_dict: dict):
-        self.df = df_dict
+        self.df_dict = df_dict
         self.units = {'mg/kg': 1.0, '%': 10000.0, 'µg/kg': 1e-3}
         self.special_tests = [
             'REACH',
