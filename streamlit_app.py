@@ -25,7 +25,7 @@ if len(files) > 0:
         st.dataframe(df.head(10))
 
 sorter = Sorter(files)
-st.write(sorter.df_dict)
+st.write(sorter.input_files)
 # def main():
 # csv = df.to_csv(index=False)
 
