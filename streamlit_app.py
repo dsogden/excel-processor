@@ -3,7 +3,7 @@ import pandas as pd
 
 from sorter import Sorter
 
-st.title("Medtronic Excel Processor")
+st.title("Medtronic Data Processor")
 
 files = st.file_uploader(
     "Select all files", accept_multiple_files=True
@@ -21,6 +21,6 @@ methods_list = st.file_uploader(
 if len(files) > 0:
     for f in files:
         st.write("filename:", f.name)
-        df = pd.read_csv(f, skiprows=1)
+        df = pd.read_excel(f)
         st.dataframe(df.head(10))
 # sorter = Sorter(files)
