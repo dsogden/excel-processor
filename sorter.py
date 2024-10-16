@@ -168,10 +168,10 @@ class Sorter:
         )
         return df
 
-    def run(self):
+    def run(self, sub_mapper):
         self.refactor_dataframes()
-        # dataframe = self.concat_dataframes()
-        # final = self.final_dataframe(dataframe)
-        # corrected = self.results_corrections(final)
-        # mapped = self.map_results(corrected, sub_mapper)
-        # return mapped
+        dataframe = self.concat_dataframes()
+        final = self.final_dataframe(dataframe)
+        corrected = self.results_corrections(final)
+        mapped = self.map_results(corrected, sub_mapper)
+        return mapped

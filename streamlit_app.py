@@ -12,7 +12,7 @@ files = st.file_uploader(
 substance_list = st.file_uploader(
     "Add the substance list csv", accept_multiple_files=False
 )
-# substances = pd.read_excel(substance_list, skiprows=0)
+substances = pd.read_excel(substance_list, skiprows=0)
 
 methods_list = st.file_uploader(
     "Add the methods list csv", accept_multiple_files=False
@@ -22,6 +22,8 @@ if len(files) > 0:
     df_dict = {f.name: pd.read_csv(f, skiprows=1) for f in files}
     st.write(df_dict)
     sorter = Sorter(df_dict)
+    substance_mapper = {value[-1]: value[0] for value in substances.values}
+    st.write(substance_mapper)
 # st.write(sorter.input_files)
 # def main():
 # csv = df.to_csv(index=False)
