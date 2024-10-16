@@ -12,11 +12,13 @@ files = st.file_uploader(
 substance_list = st.file_uploader(
     "Add the substance list csv", accept_multiple_files=False
 )
-substances = pd.read_excel(substance_list, skiprows=0)
 
-methods_list = st.file_uploader(
-    "Add the methods list csv", accept_multiple_files=False
-)
+if substance_list:
+    substances = pd.read_excel(substance_list, skiprows=0)
+
+# methods_list = st.file_uploader(
+#     "Add the methods list csv", accept_multiple_files=False
+# )
 # methods = pd.read_excel(methods_list, skiprows=0)
 if len(files) > 0:
     df_dict = {f.name: pd.read_csv(f, skiprows=1) for f in files}
