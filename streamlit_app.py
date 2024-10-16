@@ -4,10 +4,6 @@ from sorter import Sorter
 
 st.title("Data Processor")
 
-files = st.file_uploader(
-    "Select all files", accept_multiple_files=True
-)
-
 substance_list = st.file_uploader(
     "Add the substance list csv", accept_multiple_files=False
 )
@@ -23,6 +19,10 @@ methods_list = st.file_uploader(
 if methods_list:
     # st.write('Methods loaded')
     methods = pd.read_csv(methods_list, skiprows=0)
+
+files = st.file_uploader(
+    "Select all files", accept_multiple_files=True
+)
 
 df_dict = {
         f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
@@ -46,16 +46,15 @@ def main():
     ).merge(substances, how='left', on='Substance')[columns_order]
 
 if __name__ == '__main__':
-    if len(files) > 0:
-        result = main()
-        st.write('Example of the first 10 lines of file')
-        st.dataframe(result.head(10))
+    result = main()
+    st.write('Example of the first 10 lines of file')
+    st.dataframe(result.head(10))
 
-        # Create a download button
-        csv = convert_df(result)
-        st.download_button(
-            label="Download data as CSV",
-            data=csv,
-            file_name='data.csv',
-            mime='text/csv',
-        )
+    # Create a download button
+    csv = convert_df(result)
+    st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name='data.csv',
+        mime='text/csv',
+    )
