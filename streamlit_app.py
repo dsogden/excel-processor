@@ -18,9 +18,9 @@ methods_list = st.file_uploader(
     "Add the methods list excel file", accept_multiple_files=False
 )
 # methods = pd.read_excel(methods_list, skiprows=0)
-if files is not None:
+if len(files) > 0:
     for f in files:
         st.write("filename:", f.name)
         df = pd.read_excel(f, skiprows=1)
-        st.dataframe(df)
+        df.head(10)
 # sorter = Sorter(files)
