@@ -3,7 +3,7 @@ import pandas as pd
 
 from sorter import Sorter
 
-st.title("Medtronic Data Processor")
+st.title("Data Processor")
 
 files = st.file_uploader(
     "Select all files", accept_multiple_files=True
