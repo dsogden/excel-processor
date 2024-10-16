@@ -14,7 +14,7 @@ substance_list = st.file_uploader(
 )
 
 if substance_list:
-    substances = pd.read_excel(substance_list, skiprows=0)
+    substances = pd.read_csv(substance_list, skiprows=0)
 
 # methods_list = st.file_uploader(
 #     "Add the methods list csv", accept_multiple_files=False
