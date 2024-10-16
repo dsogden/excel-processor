@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-
 from sorter import Sorter
 
 st.title("Data Processor")
@@ -35,8 +34,16 @@ def main():
     st.write(df_dict)
     substance_mapper = {value[-1]: value[0] for value in substances.values}
     df = sorter.run(substance_mapper)
-    
-    st.dataframe(df.head(10))
+    columns_order = [
+        'Material(s)', 'Substance', 'CAS No.', 'Method', 'Result (mg/kg)'
+    ]
+    return df.merge(
+        methods, how='left', left_on='Test', right_on='Method Name'
+    ).merge(substances, how='left', on='Substance')[columns_order]
+
+if __name__ == '__main__':
+    result = main()
+    st.dataframe(result.head(10))
 
 # Create a download button
 # st.download_button(
