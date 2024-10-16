@@ -21,7 +21,6 @@ methods_list = st.file_uploader(
 if files is not None:
     for f in files:
         st.write("filename:", f.name)
-        st.dataframe(
-            pd.read_excel(f, skiprows=1).head(10)
-        )
+        df = pd.read_excel(f, skiprows=1)
+        st.dataframe(df)
 # sorter = Sorter(files)
