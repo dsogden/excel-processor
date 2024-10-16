@@ -169,7 +169,7 @@ class Sorter:
         return df
 
     # def run(self):
-        # self.refactor_dataframes()
+        self.refactor_dataframes()
         # dataframe = self.concat_dataframes()
         # final = self.final_dataframe(dataframe)
         # corrected = self.results_corrections(final)
