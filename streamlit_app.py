@@ -24,8 +24,9 @@ if len(files) > 0:
         df = pd.read_csv(f, skiprows=1)
         st.dataframe(df.head(10))
 
-# sorter = Sorter(files)
-def main():
+sorter = Sorter(files)
+st.write()
+# def main():
 # csv = df.to_csv(index=False)
 
 # Create a download button

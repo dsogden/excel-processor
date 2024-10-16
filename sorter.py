@@ -188,7 +188,6 @@ class Sorter:
 
     def run(self):
         self.read_files()
-        print(self.df_dict)
         # self.refactor_dataframes()
         # dataframe = self.concat_dataframes()
         # final = self.final_dataframe(dataframe)
