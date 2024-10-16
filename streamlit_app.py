@@ -46,15 +46,16 @@ def main():
     ).merge(substances, how='left', on='Substance')[columns_order]
 
 if __name__ == '__main__':
-    result = main()
-    st.write('Example of the first 10 lines of file')
-    st.dataframe(result.head(10))
+    if len(files) > 0:
+        result = main()
+        st.write('Example of the first 10 lines of file')
+        st.dataframe(result.head(10))
 
-    # Create a download button
-    csv = convert_df(result)
-    st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='data.csv',
-        mime='text/csv',
-    )
+        # Create a download button
+        csv = convert_df(result)
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='data.csv',
+            mime='text/csv',
+        )
