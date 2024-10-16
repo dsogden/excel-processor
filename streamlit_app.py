@@ -6,7 +6,7 @@ import pandas as pd
 st.title("Medtronic Excel Processor")
 
 uploaded_files = st.file_uploader(
-    "Choose a CSV file", accept_multiple_files=True
+    "Select all files", accept_multiple_files=True
 )
 
 for uploaded_file in uploaded_files:
@@ -16,6 +16,7 @@ for uploaded_file in uploaded_files:
 substance_list = st.file_uploader(
     "Add the substance list excel file", accept_multiple_files=False
 )
+
 substances = pd.read_excel(substance_list.read(), skiprows=0)
 
 methods_list = st.file_uploader(
