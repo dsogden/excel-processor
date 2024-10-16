@@ -31,32 +31,34 @@ df_dict = {
         for f in files
     }
 
+st.write(df_dict)
+
 @st.cache_data
 def convert_df(df):
     return df.to_csv().encode('utf-8')
 
-def main():
-    sorter = Sorter(df_dict)
-    substance_mapper = {value[-1]: value[0] for value in substances.values}
-    df = sorter.run(substance_mapper)
-    columns_order = [
-        'Material(s)', 'Substance', 'CAS No.', 'Method', 'Result (mg/kg)'
-    ]
-    return df.merge(
-        methods, how='left', left_on='Test', right_on='Method Name'
-    ).merge(substances, how='left', on='Substance')[columns_order]
+# def main():
+#     sorter = Sorter(df_dict)
+#     substance_mapper = {value[-1]: value[0] for value in substances.values}
+#     df = sorter.run(substance_mapper)
+#     columns_order = [
+#         'Material(s)', 'Substance', 'CAS No.', 'Method', 'Result (mg/kg)'
+#     ]
+#     return df.merge(
+#         methods, how='left', left_on='Test', right_on='Method Name'
+#     ).merge(substances, how='left', on='Substance')[columns_order]
 
-if __name__ == '__main__':
-    if len(files) > 0:
-        result = main()
-        st.write('Example of the first 5 lines of file')
-        st.dataframe(result.head(5))
+# if __name__ == '__main__':
+#     if len(files) > 0:
+#         result = main()
+#         st.write('Example of the first 5 lines of file')
+#         st.dataframe(result.head(5))
 
-        # Create a download button
-        csv = convert_df(result)
-        st.download_button(
-            label="Download data as CSV",
-            data=csv,
-            file_name='data.csv',
-            mime='text/csv',
-        )
+#         # Create a download button
+#         csv = convert_df(result)
+#         st.download_button(
+#             label="Download data as CSV",
+#             data=csv,
+#             file_name='data.csv',
+#             mime='text/csv',
+#         )
