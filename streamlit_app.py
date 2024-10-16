@@ -9,9 +9,6 @@ files = st.file_uploader(
     "Select all files", accept_multiple_files=True
 )
 
-for f in files:
-    st.write("filename:", f.name)
-
 substance_list = st.file_uploader(
     "Add the substance list excel file", accept_multiple_files=False
 )
@@ -22,6 +19,8 @@ methods_list = st.file_uploader(
 )
 # methods = pd.read_excel(methods_list, skiprows=0)
 if files is not None:
+    for f in files:
+        st.write("filename:", f.name)
     st.dataframe(
         pd.read_excel(files[0], skiprows=1).head(10)
     )
