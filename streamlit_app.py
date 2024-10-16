@@ -21,6 +21,6 @@ methods_list = st.file_uploader(
 if len(files) > 0:
     for f in files:
         st.write("filename:", f.name)
-        df = pd.read_csv(f)
+        df = pd.read_csv(f, skiprows=1)
         st.dataframe(df.head(10))
 # sorter = Sorter(files)
