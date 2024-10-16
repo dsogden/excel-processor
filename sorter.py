@@ -168,7 +168,7 @@ class Sorter:
         )
         return df
 
-    # def run(self):
+    def run(self):
         self.refactor_dataframes()
         # dataframe = self.concat_dataframes()
         # final = self.final_dataframe(dataframe)
