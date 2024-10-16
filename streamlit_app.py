@@ -30,6 +30,10 @@ df_dict = {
         for f in files
     }
 
+@st.cache_data
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
+
 def main():
     sorter = Sorter(df_dict)
     substance_mapper = {value[-1]: value[0] for value in substances.values}
@@ -44,13 +48,13 @@ def main():
 if __name__ == '__main__':
     result = main()
     st.write('Example of the first 10 lines of file')
-    # st.write('-------------')
     st.dataframe(result.head(10))
 
-# Create a download button
-# st.download_button(
-#     label="Download data as CSV",
-#     data=csv,
-#     file_name='data.csv',
-#     mime='text/csv',
-# )
+    # Create a download button
+    csv = convert_df(result)
+    st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name='data.csv',
+        mime='text/csv',
+    )
