@@ -16,10 +16,9 @@ for uploaded_file in uploaded_files:
 substance_list = st.file_uploader(
     "Add the substance list excel file", accept_multiple_files=False
 )
+substances = pd.read_excel(substance_list, skiprows=0)
 
-substances = pd.read_excel(substance_list.read(), skiprows=0)
-
-methods_list = st.file_uploader(
-    "Add the methods list excel file", accept_multiple_files=False
-)
-methods = pd.read_excel(methods_list.read(), skiprows=0)
+# methods_list = st.file_uploader(
+#     "Add the methods list excel file", accept_multiple_files=False
+# )
+# methods = pd.read_excel(methods_list, skiprows=0)
