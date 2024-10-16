@@ -26,7 +26,7 @@ class Sorter:
         '''
         # split on the file extension and then remove the initial pathing
         self.df_dict = {
-            f.split('.xls')[0]: pd.read_excel(f, skiprows=1)\
+            f.name: pd.read_excel(f, skiprows=1)\
             .drop(columns=self.columns_to_remove)
             for f in self.input_files
         }
