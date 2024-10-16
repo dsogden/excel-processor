@@ -24,14 +24,14 @@ if methods_list:
     # st.write('Methods loaded')
     methods = pd.read_csv(methods_list, skiprows=0)
 
-def main():
-    df_dict = {
+df_dict = {
         f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
             .drop(columns=['Test No', 'Status', 'Weight'])
         for f in files
     }
+
+def main():
     sorter = Sorter(df_dict)
-    st.write(df_dict)
     substance_mapper = {value[-1]: value[0] for value in substances.values}
     df = sorter.run(substance_mapper)
     columns_order = [
