@@ -25,8 +25,7 @@ if len(files) > 0:
     # st.write(df_dict)
     sorter = Sorter(df_dict)
     substance_mapper = {value[-1]: value[0] for value in substances.values}
-    # st.write(substance_mapper)
-    df = sorter.run()
+    df = sorter.run(substance_mapper)
     st.dataframe(df.head(10))
 # st.write(sorter.input_files)
 # def main():
