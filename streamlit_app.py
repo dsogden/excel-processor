@@ -32,11 +32,11 @@ df_dict = {
     }
 
 test_df = pd.read_csv(files[-1], skiprows=1)
-st.write(test_df)
+st.dataframe(test_df.head(10))
 
-@st.cache_data
-def convert_df(df):
-    return df.to_csv().encode('utf-8')
+# @st.cache_data
+# def convert_df(df):
+#     return df.to_csv().encode('utf-8')
 
 # def main():
 #     sorter = Sorter(df_dict)
