@@ -5,9 +5,9 @@ import pandas as pd
 
 st.title("Medtronic Excel Processor")
 
-uploaded_files = st.file_uploader(
-    "Select all files", accept_multiple_files=True
-)
+# uploaded_files = st.file_uploader(
+#     "Select all files", accept_multiple_files=True
+# )
 
 # for uploaded_file in uploaded_files:
 #     bytes_data = uploaded_file.read()
