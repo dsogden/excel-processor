@@ -14,12 +14,15 @@ substance_list = st.file_uploader(
 )
 
 if substance_list:
+    st.write('Substances loaded')
     substances = pd.read_csv(substance_list, skiprows=0)
 
-# methods_list = st.file_uploader(
-#     "Add the methods list csv", accept_multiple_files=False
-# )
-# methods = pd.read_excel(methods_list, skiprows=0)
+methods_list = st.file_uploader(
+    "Add the methods list csv", accept_multiple_files=False
+)
+if methods_list:
+    st.write('Methods loaded')
+    methods = pd.read_csv(methods_list, skiprows=0)
 
 
 def main():
@@ -32,6 +35,7 @@ def main():
     st.write(df_dict)
     substance_mapper = {value[-1]: value[0] for value in substances.values}
     df = sorter.run(substance_mapper)
+    
     st.dataframe(df.head(10))
 
 # Create a download button
