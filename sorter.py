@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 
 class Sorter:
-    def __init__(self, input_files: list[str]):
-        self.input_files = input_files
+    def __init__(self, df_dict: dict):
+        self.df = df_dict
         self.units = {'mg/kg': 1.0, '%': 10000.0, 'µg/kg': 1e-3}
         self.special_tests = [
             'REACH',
@@ -12,24 +12,6 @@ class Sorter:
         ]
         self.columns_to_remove = ['Test No', 'Status', 'Weight']
         self.string = '---'
-
-    def read_files(self):
-        '''
-        Reads a list of file names from a folder, extracts the name, and
-        reads files into a pandas dataframe
-
-        Input:
-            list of file names
-
-        Returns:
-            Dictionary of pandas dataframes
-        '''
-        # split on the file extension and then remove the initial pathing
-        self.df_dict = {
-            f.name: pd.read_excel(f, skiprows=1)\
-            .drop(columns=self.columns_to_remove)
-            for f in self.input_files
-        }
 
     def update_special(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         '''
@@ -186,8 +168,7 @@ class Sorter:
         )
         return df
 
-    def run(self):
-        self.read_files()
+    # def run(self):
         # self.refactor_dataframes()
         # dataframe = self.concat_dataframes()
         # final = self.final_dataframe(dataframe)

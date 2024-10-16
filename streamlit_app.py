@@ -19,12 +19,14 @@ methods_list = st.file_uploader(
 )
 # methods = pd.read_excel(methods_list, skiprows=0)
 if len(files) > 0:
+    df_dict = {f.name: pd.read_csv(f, skiprows=1) for f in files}
     for f in files:
         st.write("filename:", f.name)
-        df = pd.read_csv(f, skiprows=1)
-        st.dataframe(df.head(10))
+        # df = pd.read_csv(f, skiprows=1)
+        # st.dataframe(df.head(10))
 
-sorter = Sorter(files)
+st.write(df_dict)
+sorter = Sorter(df_dict)
 # st.write(sorter.input_files)
 # def main():
 # csv = df.to_csv(index=False)
