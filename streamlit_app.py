@@ -20,7 +20,9 @@ if substance_list:
 #     "Add the methods list csv", accept_multiple_files=False
 # )
 # methods = pd.read_excel(methods_list, skiprows=0)
-if len(files) > 0:
+
+
+def main():
     df_dict = {
         f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
             .drop(columns=['Test No', 'Status', 'Weight'])
@@ -31,9 +33,6 @@ if len(files) > 0:
     substance_mapper = {value[-1]: value[0] for value in substances.values}
     df = sorter.run(substance_mapper)
     st.dataframe(df.head(10))
-# st.write(sorter.input_files)
-# def main():
-# csv = df.to_csv(index=False)
 
 # Create a download button
 # st.download_button(
