@@ -5,7 +5,7 @@ from sorter import Sorter
 st.title("Data Processor")
 
 substance_list = st.file_uploader(
-    "Add the substance list csv", accept_multiple_files=False
+    "Add the substance list (csv format)", accept_multiple_files=False
 )
 
 if substance_list:
@@ -13,7 +13,7 @@ if substance_list:
     substances = pd.read_csv(substance_list, skiprows=0)
 
 methods_list = st.file_uploader(
-    "Add the methods list csv", accept_multiple_files=False
+    "Add the methods list (csv format)", accept_multiple_files=False
 )
 
 if methods_list:
@@ -21,7 +21,7 @@ if methods_list:
     methods = pd.read_csv(methods_list, skiprows=0)
 
 files = st.file_uploader(
-    "Select all results files", accept_multiple_files=True
+    "Select all results files (csv format)", accept_multiple_files=True
 )
 
 df_dict = {
