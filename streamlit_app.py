@@ -43,6 +43,8 @@ def main():
 
 if __name__ == '__main__':
     result = main()
+    st.write('Example of the first 10 lines of file')
+    st.write('-------------')
     st.dataframe(result.head(10))
 
 # Create a download button
