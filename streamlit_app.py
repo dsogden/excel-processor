@@ -31,8 +31,9 @@ df_dict = {
         for f in files
     }
 
-test_df = pd.read_csv(files[-1], skiprows=1)
-st.dataframe(test_df.head(10))
+if len(files) > 0:
+    test_df = pd.read_csv(files[-1], skiprows=1)
+    st.dataframe(test_df.head(10))
 
 # @st.cache_data
 # def convert_df(df):
