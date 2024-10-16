@@ -26,7 +26,7 @@ class Sorter:
         '''
         # split on the file extension and then remove the initial pathing
         self.df_dict = {
-            f.split('.xls')[0].split('/')[-1]: pd.read_excel(f, skiprows=1)\
+            f.split('.xls')[0]: pd.read_excel(f, skiprows=1)\
             .drop(columns=self.columns_to_remove)
             for f in self.input_files
         }
@@ -186,11 +186,12 @@ class Sorter:
         )
         return df
 
-    def run(self, sub_mapper: dict):
+    def run(self):
         self.read_files()
-        self.refactor_dataframes()
-        dataframe = self.concat_dataframes()
-        final = self.final_dataframe(dataframe)
-        corrected = self.results_corrections(final)
-        mapped = self.map_results(corrected, sub_mapper)
-        return mapped
+        print(self.df_dict)
+        # self.refactor_dataframes()
+        # dataframe = self.concat_dataframes()
+        # final = self.final_dataframe(dataframe)
+        # corrected = self.results_corrections(final)
+        # mapped = self.map_results(corrected, sub_mapper)
+        # return mapped
