@@ -31,7 +31,8 @@ df_dict = {
         for f in files
     }
 
-st.write(df_dict)
+test_df = pd.read_csv(files[-1], skiprows=1)
+st.write(test_df)
 
 @st.cache_data
 def convert_df(df):
