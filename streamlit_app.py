@@ -16,7 +16,7 @@ st.title("Medtronic Excel Processor")
 substance_list = st.file_uploader(
     "Add the substance list excel file", accept_multiple_files=False
 )
-substances = pd.read_excel(substance_list, skiprows=0)
+# substances = pd.read_excel(substance_list, skiprows=0)
 
 # methods_list = st.file_uploader(
 #     "Add the methods list excel file", accept_multiple_files=False
