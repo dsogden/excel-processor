@@ -49,8 +49,8 @@ def main():
 if __name__ == '__main__':
     if len(files) > 0:
         result = main()
-        st.write('Example of the first 10 lines of file')
-        st.dataframe(result.head(10))
+        st.write('Example of the first 5 lines of file')
+        st.dataframe(result.head(5))
 
         # Create a download button
         csv = convert_df(result)
