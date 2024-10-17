@@ -21,8 +21,7 @@ if methods_list:
     methods = pd.read_csv(methods_list, skiprows=0)
 
 files = st.file_uploader(
-    "Select all results files (csv format)", accept_multiple_files=True,
-    label_visibility='collapsed'
+    "Select all results files (csv format)", accept_multiple_files=True
 )
 
 df_dict = {
