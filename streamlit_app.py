@@ -46,7 +46,7 @@ if __name__ == '__main__':
     }
         result = main()
         st.write('Example of the first 10 lines of file')
-        st.dataframe(result.head(10).to_string(index=False))
+        st.dataframe(result.head(10))
 
         # Create a download button
         csv = convert_df(result)
