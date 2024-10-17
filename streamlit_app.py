@@ -22,17 +22,9 @@ files = st.file_uploader(
     "Select all results files (csv format)", accept_multiple_files=True
 )
 
-if len(files) > 0:
-    df_dict = {
-        f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
-            .drop(columns=['Test No', 'Status', 'Weight'])
-        for f in files
-    }
-    # st.write(df_dict)
-
-# @st.cache_data
-# def convert_df(df):
-#     return df.to_csv().encode('utf-8')
+@st.cache_data
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
 
 def main():
     sorter = Sorter(df_dict)
@@ -47,15 +39,20 @@ def main():
 
 if __name__ == '__main__':
     if len(files) > 0:
+        df_dict = {
+        f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
+            .drop(columns=['Test No', 'Status', 'Weight'])
+        for f in files
+    }
         result = main()
         st.write('Example of the first 10 lines of file')
         st.dataframe(result.head(10))
 
-#         # Create a download button
-#         csv = convert_df(result)
-#         st.download_button(
-#             label="Download data as CSV",
-#             data=csv,
-#             file_name='data.csv',
-#             mime='text/csv',
-#         )
+        # Create a download button
+        csv = convert_df(result)
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='data.csv',
+            mime='text/csv',
+        )
