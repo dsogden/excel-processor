@@ -148,7 +148,7 @@ class Sorter:
         limit = 0.1 # REACH limit is 0.1 % to report results 
         partition = df.loc[df['Test'] == test, :]
         partition = partition.astype({column: np.float32})
-        indices = partition[partition[column] < 0.1].index
+        indices = partition[partition[column] < limit].index
         # remove REACH indices, update the index, and remove index column
         df = df.drop(axis=0, index=indices).reset_index().drop(columns='index')
         # update REACH and MDR results to correct units
@@ -156,7 +156,7 @@ class Sorter:
             scaled = df.loc[df['Test'] == test, column]
             if scaled.dtype is not float:
                 scaled = scaled.astype({column: np.float32})
-            scaled = scaled * 10000
+            scaled = scaled * self.units['%']
             scaled_indices = scaled.index
             results = scaled.values
             df.loc[scaled_indices, column] = results
