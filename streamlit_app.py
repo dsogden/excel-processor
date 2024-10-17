@@ -50,7 +50,6 @@ if __name__ == '__main__':
 
         # Create a download button
         csv = convert_df(result)
-        st.write(csv[:10])
         st.download_button(
             label="Download data as CSV",
             data=csv,
