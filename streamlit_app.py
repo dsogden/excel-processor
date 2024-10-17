@@ -31,8 +31,14 @@ files = st.file_uploader(
 #     }
 
 if len(files) > 0:
-    test_df = pd.read_csv(files[-1], skiprows=1)
-    st.dataframe(test_df.head(10))
+    # test_df = pd.read_csv(files[-1], skiprows=1)
+    # st.dataframe(test_df.head(10))
+    df_dict = {
+        f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
+            .drop(columns=['Test No', 'Status', 'Weight'])
+        for f in files
+    }
+    st.write(df_dict)
 
 # @st.cache_data
 # def convert_df(df):
