@@ -24,11 +24,11 @@ files = st.file_uploader(
     "Select all results files (csv format)", accept_multiple_files=True
 )
 
-df_dict = {
-        f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
-            .drop(columns=['Test No', 'Status', 'Weight'])
-        for f in files
-    }
+# df_dict = {
+#         f.name.split('.csv')[0]: pd.read_csv(f, skiprows=1)\
+#             .drop(columns=['Test No', 'Status', 'Weight'])
+#         for f in files
+#     }
 
 if len(files) > 0:
     test_df = pd.read_csv(files[-1], skiprows=1)
