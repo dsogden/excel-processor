@@ -54,5 +54,5 @@ if __name__ == '__main__':
             label="Download data as CSV",
             data=csv,
             file_name='data.csv',
-            mime='text/csv',
+            mime='text/csv'
         )
